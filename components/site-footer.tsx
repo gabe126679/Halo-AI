@@ -20,7 +20,7 @@ export function SiteFooter() {
             <h4 className="text-sm font-semibold">Product</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link href="/onboarding" className="hover:text-foreground transition-colors">
+                <Link href="/intelligent-onboarding" className="hover:text-foreground transition-colors">
                   Get Started
                 </Link>
               </li>

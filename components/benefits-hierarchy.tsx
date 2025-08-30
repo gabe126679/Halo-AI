@@ -146,7 +146,7 @@ export function BenefitsHierarchy() {
                 Test Drive Halo AI
               </a>
               <a 
-                href="/onboarding" 
+                href="/intelligent-onboarding" 
                 className="inline-flex items-center px-6 py-3 border border-primary/20 text-primary rounded-lg font-medium hover:bg-primary/5 transition-colors"
               >
                 <Calendar className="mr-2 h-4 w-4" />

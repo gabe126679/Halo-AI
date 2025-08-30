@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Services', href: '#services' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'Voice Agent', href: '/voice-agent' },
-  { name: 'Onboarding', href: '/onboarding' },
+  { name: 'Demo', href: '/intelligent-onboarding' },
 ];
 
 export function SiteHeader() {
@@ -68,7 +68,7 @@ export function SiteHeader() {
             </Button>
 
             <Button asChild className="hidden md:inline-flex">
-              <Link href="/onboarding">Start Onboarding</Link>
+              <Link href="/intelligent-onboarding">Get Started</Link>
             </Button>
 
             {/* Mobile Navigation */}
@@ -98,8 +98,8 @@ export function SiteHeader() {
                     </Link>
                   ))}
                   <Button asChild className="w-full">
-                    <Link href="/onboarding" onClick={() => setIsOpen(false)}>
-                      Start Onboarding
+                    <Link href="/intelligent-onboarding" onClick={() => setIsOpen(false)}>
+                      Get Started
                     </Link>
                   </Button>
                 </nav>

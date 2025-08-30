@@ -162,7 +162,7 @@ export function ServicesGrid() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
-                <a href="/onboarding">
+                <a href="/intelligent-onboarding">
                   Get Custom Recommendation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>

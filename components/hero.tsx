@@ -49,7 +49,7 @@ export function Hero() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 border-primary/20 hover:bg-primary/5">
-              <Link href="/onboarding">
+              <Link href="/intelligent-onboarding">
                 <Calendar className="mr-2 h-5 w-5" />
                 Book Discovery Call
               </Link>

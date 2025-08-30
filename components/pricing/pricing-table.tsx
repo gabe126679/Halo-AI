@@ -183,7 +183,7 @@ export function PricingTable() {
                   variant={('popular' in tier && tier.popular) ? 'default' : 'outline'}
                   asChild
                 >
-                  <Link href="/onboarding">
+                  <Link href="/intelligent-onboarding">
                     {'cta' in tier ? tier.cta : 'Get Started'}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>

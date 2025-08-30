@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, Mic, MicOff, Trash2, Square } from 'lucide-react';
+import { ArrowLeft, Mic, MicOff, Trash2, Square, ArrowRight, Calendar } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function VoiceAgentPage() {
@@ -628,6 +628,33 @@ export default function VoiceAgentPage() {
               </div>
             </Card>
           </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center max-w-3xl mx-auto">
+          <Card className="p-8 bg-gradient-to-r from-primary/5 to-accent/5 border-primary/10">
+            <h3 className="text-2xl font-semibold mb-4">
+              Ready to Deploy Your Own Voice Agent?
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Experience the power of AI voice agents for your business. Get a custom setup 
+              tailored to your industry with our intelligent onboarding process.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="halo-button">
+                <Link href="/intelligent-onboarding">
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Get Your Custom Agent
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
+                <Link href="/#services">
+                  <ArrowRight className="mr-2 h-5 w-5" />
+                  See All Services
+                </Link>
+              </Button>
+            </div>
+          </Card>
         </div>
       </div>
     </div>
