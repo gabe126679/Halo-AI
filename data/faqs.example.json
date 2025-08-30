@@ -1,0 +1,34 @@
+[
+  {
+    "q": "What are your hours?",
+    "a": "We're available Monday through Friday from 9 AM to 6 PM, and Saturday from 10 AM to 4 PM. Our AI agents are available 24/7 to capture leads and schedule appointments."
+  },
+  {
+    "q": "Do you work with buyers and sellers?",
+    "a": "Yes, we work with both buyers and sellers. Our agents can qualify leads, schedule showings, answer basic questions, and seamlessly hand off to the appropriate team member."
+  },
+  {
+    "q": "What areas do you serve?",
+    "a": "We serve the greater metropolitan area including downtown, suburbs, and surrounding counties. Our AI agents can provide specific information about neighborhoods, schools, and local amenities."
+  },
+  {
+    "q": "How do I schedule a showing?",
+    "a": "You can schedule a showing by calling us, filling out our online form, or speaking with our AI agent. We'll coordinate with the listing agent and confirm your appointment within 2 hours."
+  },
+  {
+    "q": "Do you offer virtual tours?",
+    "a": "Yes, we offer both virtual tours and in-person showings. Virtual tours are available for most properties and can be scheduled immediately through our AI system."
+  },
+  {
+    "q": "What's your commission rate?",
+    "a": "Our commission rates are competitive and vary based on the property and services needed. Let me connect you with one of our agents who can provide specific details based on your situation."
+  },
+  {
+    "q": "How long does it take to close?",
+    "a": "Typical closing time is 30-45 days depending on financing and property conditions. Our team will guide you through each step and keep you updated on progress."
+  },
+  {
+    "q": "Do you help with financing?",
+    "a": "While we don't provide financing directly, we work with several trusted lenders who can help with pre-approval and competitive rates. We can connect you with the right mortgage professional for your needs."
+  }
+]

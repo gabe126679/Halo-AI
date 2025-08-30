@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    /* Halo AI Light Theme */
+    --background: 219 91% 97%; /* Very light blue-white #dbeafe */
+    --foreground: 225 39% 21%; /* Dark blue-gray #1a1f2e */
+    --card: 0 0% 100%;
+    --card-foreground: 225 39% 21%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 39% 21%;
+    --primary: 207 89% 62%; /* Main blue #93c5fd */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 213 97% 87%; /* Light blue #dbeafe */
+    --secondary-foreground: 225 39% 21%;
+    --muted: 213 97% 87%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 70%; /* Soft blue #bae6fd */
+    --accent-foreground: 225 39% 21%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 213 97% 87%;
+    --input: 213 97% 87%;
+    --ring: 207 89% 62%;
+    --chart-1: 193 100% 70%; /* Cyan blue #40e0ff */
+    --chart-2: 207 89% 62%; /* Main blue #93c5fd */
+    --chart-3: 199 89% 70%; /* Soft blue #bae6fd */
+    --chart-4: 240 100% 75%; /* Background blue #c0c0ff */
+    --chart-5: 213 97% 87%; /* Very light blue #dbeafe */
+    --radius: 0.75rem;
+  }
+  .dark {
+    /* Halo AI Dark Theme - Matches logo background */
+    --background: 225 59% 8%; /* Dark background #0a0f1c */
+    --foreground: 213 97% 87%; /* Light blue text #dbeafe */
+    --card: 225 47% 13%; /* Slightly lighter dark #1a1f2e */
+    --card-foreground: 213 97% 87%;
+    --popover: 225 47% 13%;
+    --popover-foreground: 213 97% 87%;
+    --primary: 207 89% 62%; /* Main blue #93c5fd */
+    --primary-foreground: 225 59% 8%;
+    --secondary: 225 47% 13%;
+    --secondary-foreground: 213 97% 87%;
+    --muted: 225 47% 13%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 70%; /* Soft blue #bae6fd */
+    --accent-foreground: 225 59% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 213 97% 87%;
+    --border: 225 47% 13%;
+    --input: 225 47% 13%;
+    --ring: 207 89% 62%;
+    --chart-1: 193 100% 70%; /* Cyan blue #40e0ff */
+    --chart-2: 207 89% 62%; /* Main blue #93c5fd */
+    --chart-3: 199 89% 70%; /* Soft blue #bae6fd */
+    --chart-4: 240 100% 75%; /* Background blue #c0c0ff */
+    --chart-5: 213 97% 87%; /* Very light blue #dbeafe */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Subtle ethereal gradient background */
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 50%, hsl(var(--background)) 100%);
+    background-attachment: fixed;
+  }
+}
+
+/* Halo AI Custom Animations */
+@keyframes ethereal-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(147, 197, 253, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(64, 224, 255, 0.4), 0 0 60px rgba(147, 197, 253, 0.2);
+  }
+}
+
+@keyframes pulse-halo {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .halo-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+    box-shadow: 0 8px 32px rgba(147, 197, 253, 0.1);
+  }
+  
+  .halo-button {
+    @apply bg-primary text-primary-foreground;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--chart-1)) 100%);
+    box-shadow: 0 4px 16px rgba(147, 197, 253, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .halo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(147, 197, 253, 0.4);
+  }
+  
+  .ethereal-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--chart-5)) 0%,
+      hsl(var(--primary)) 30%,
+      hsl(var(--accent)) 70%,
+      hsl(var(--chart-1)) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: ethereal-glow 6s ease-in-out infinite;
+  }
+}

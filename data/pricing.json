@@ -1,0 +1,99 @@
+{
+  "monthly": [
+    {
+      "name": "Starter",
+      "price": 297,
+      "setup": 499,
+      "description": "Perfect for small teams getting started",
+      "features": [
+        "1 phone number",
+        "1 CRM integration",
+        "Basic analytics",
+        "Email support",
+        "Standard voice quality",
+        "1,000 minutes/month included"
+      ],
+      "popular": false
+    },
+    {
+      "name": "Growth",
+      "price": 697,
+      "setup": 999,
+      "description": "For growing businesses with multiple channels",
+      "features": [
+        "Multi-agent support",
+        "2 CRM integrations",
+        "Advanced analytics",
+        "Call routing",
+        "Priority support",
+        "Premium voice quality",
+        "3,000 minutes/month included",
+        "SMS follow-up"
+      ],
+      "popular": true
+    },
+    {
+      "name": "Pro",
+      "price": 1497,
+      "setup": 1999,
+      "description": "Enterprise-grade solution with custom workflows",
+      "features": [
+        "Custom workflows",
+        "Unlimited integrations",
+        "Compliance packs",
+        "Dedicated support",
+        "SLA guarantee",
+        "Custom voice training",
+        "10,000 minutes/month included",
+        "White-label options",
+        "Advanced security"
+      ],
+      "popular": false
+    }
+  ],
+  "oneTime": [
+    {
+      "name": "Basic Setup",
+      "price": 3000,
+      "description": "Simple voice agent with basic features",
+      "features": [
+        "Single-purpose agent",
+        "Basic CRM integration",
+        "Standard voice quality",
+        "Email support for 90 days",
+        "Basic analytics dashboard"
+      ],
+      "note": "No monthly fees. You handle hosting and maintenance."
+    },
+    {
+      "name": "Advanced Setup",
+      "price": 5500,
+      "description": "Multi-feature agent with advanced capabilities",
+      "features": [
+        "Multi-purpose agent",
+        "Multiple integrations",
+        "Premium voice quality",
+        "Priority support for 6 months",
+        "Advanced analytics",
+        "Custom workflows"
+      ],
+      "note": "Includes 6 months of updates. Perfect for established businesses."
+    },
+    {
+      "name": "Enterprise Setup",
+      "price": 7500,
+      "priceNote": "+",
+      "description": "Fully custom solution for complex requirements",
+      "features": [
+        "Completely custom agent",
+        "Unlimited integrations",
+        "Custom voice training",
+        "1 year dedicated support",
+        "Compliance packs included",
+        "White-label solution",
+        "Advanced security features"
+      ],
+      "note": "Price varies based on complexity. Includes 1 year of updates."
+    }
+  ]
+}

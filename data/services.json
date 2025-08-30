@@ -1,0 +1,74 @@
+[
+  {
+    "id": "voice-agents",
+    "title": "Voice Agents for Lead Capture",
+    "description": "Miss fewer calls, qualify faster, route smarter.",
+    "icon": "Phone",
+    "features": [
+      "24/7 call answering",
+      "Lead qualification",
+      "Appointment scheduling",
+      "CRM integration"
+    ]
+  },
+  {
+    "id": "employee-training",
+    "title": "Employee Training Assistants",
+    "description": "SOPs and tribal knowledge, available on demand.",
+    "icon": "GraduationCap",
+    "features": [
+      "Interactive training modules",
+      "Knowledge base search",
+      "Progress tracking",
+      "Personalized learning paths"
+    ]
+  },
+  {
+    "id": "lead-gen-crm",
+    "title": "Lead Gen + CRM Integration",
+    "description": "Capture, clean, and push data where it belongs.",
+    "icon": "Database",
+    "features": [
+      "Multi-source lead capture",
+      "Data validation & enrichment",
+      "Automated workflows",
+      "Real-time sync"
+    ]
+  },
+  {
+    "id": "ai-consulting",
+    "title": "AI Consulting & Strategy",
+    "description": "Roadmaps that pay for themselves.",
+    "icon": "Brain",
+    "features": [
+      "AI readiness assessment",
+      "Custom strategy development",
+      "Implementation roadmap",
+      "ROI optimization"
+    ]
+  },
+  {
+    "id": "web-development",
+    "title": "Web App Development",
+    "description": "Modern, secure, maintainable.",
+    "icon": "Globe",
+    "features": [
+      "React & Next.js applications",
+      "API development",
+      "Database design",
+      "Cloud deployment"
+    ]
+  },
+  {
+    "id": "mobile-development",
+    "title": "Mobile App Development",
+    "description": "Ship fast, feel native.",
+    "icon": "Smartphone",
+    "features": [
+      "React Native development",
+      "iOS & Android apps",
+      "App store optimization",
+      "Performance monitoring"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_PRIVATE_TARGET = "server"
+
+# Redirect all requests to Next.js
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/___netlify-handler"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
+
+# Environment variables (you'll need to set these in Netlify dashboard)
+# OPENAI_API_KEY = "your_openai_key_here"
