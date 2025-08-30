@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, Mic, MicOff, Trash2 } from 'lucide-react';
+import { ArrowLeft, Mic, MicOff, Trash2, Square } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function VoiceAgentPage() {
@@ -18,10 +18,13 @@ export default function VoiceAgentPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentInterimTranscript, setCurrentInterimTranscript] = useState('');
   const [microphoneStatus, setMicrophoneStatus] = useState<'checking' | 'available' | 'denied' | 'unsupported'>('checking');
+  const [isConversationActive, setIsConversationActive] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   
   const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesisUtterance | null>(null);
   const conversationEndRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Load conversation from localStorage on mount
   useEffect(() => {
@@ -195,6 +198,14 @@ export default function VoiceAgentPage() {
       return;
     }
     
+    // Stop listening immediately to prevent echo feedback
+    if (recognitionRef.current && isListening) {
+      addDebugMessage('🛑 Stopping listening to prevent echo...');
+      recognitionRef.current.stop();
+      setIsListening(false);
+      setCurrentInterimTranscript('');
+    }
+    
     setConversation(prev => prev + `\nUser: ${userText}`);
     setIsProcessing(true);
     
@@ -222,7 +233,7 @@ export default function VoiceAgentPage() {
       setConversation(prev => prev + `\nAI: ${aiResponse}`);
       
       // Speak the response
-      speakText(aiResponse);
+      await speakText(aiResponse);
     } catch (error: any) {
       console.error('Error processing voice input:', error);
       const errorMessage = error.message || 'Sorry, I encountered an error processing your request.';
@@ -232,26 +243,117 @@ export default function VoiceAgentPage() {
     }
   };
 
-  const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      // Cancel any ongoing speech
-      window.speechSynthesis.cancel();
+  const speakText = async (text: string) => {
+    try {
+      console.log('🔊 Starting ElevenLabs TTS for text:', text.substring(0, 50));
       
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1;
-      utterance.pitch = 1;
-      utterance.volume = 1;
+      // Stop any current audio
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
       
-      utterance.onstart = () => {
-        setIsSpeaking(true);
-      };
+      setIsSpeaking(true);
       
-      utterance.onend = () => {
+      const response = await fetch('/api/elevenlabs-tts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: text,
+          voiceId: 'pNInz6obpgDQGcFmaJgB' // Adam voice - warm, professional
+        }),
+      });
+      
+      console.log('📡 ElevenLabs API response status:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('❌ ElevenLabs API error:', errorData);
+        throw new Error(`ElevenLabs API failed: ${errorData.error || response.statusText}`);
+      }
+      
+      console.log('✅ ElevenLabs response received, creating audio...');
+      const audioBlob = await response.blob();
+      console.log('🎵 Audio blob size:', audioBlob.size, 'bytes');
+      
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
+      
+      audio.onended = () => {
+        console.log('🎵 ElevenLabs audio finished playing');
         setIsSpeaking(false);
+        setCurrentAudio(null);
+        URL.revokeObjectURL(audioUrl);
+        
+        // Restart listening after AI finishes speaking (with delay to prevent echo)
+        if (isConversationActive && !isProcessing) {
+          setTimeout(() => {
+            if (recognitionRef.current && !isListening && isConversationActive) {
+              addDebugMessage('🔄 Restarting listening after AI speech...');
+              try {
+                recognitionRef.current.start();
+                setIsListening(true);
+              } catch (error: any) {
+                addDebugMessage(`Failed to restart listening: ${error.message}`);
+              }
+            }
+          }, 1000); // 1 second delay to prevent echo
+        }
       };
       
-      synthRef.current = utterance;
-      window.speechSynthesis.speak(utterance);
+      audio.onerror = (e) => {
+        console.error('❌ Error playing ElevenLabs audio:', e);
+        setIsSpeaking(false);
+        setCurrentAudio(null);
+        URL.revokeObjectURL(audioUrl);
+      };
+      
+      setCurrentAudio(audio);
+      audioRef.current = audio;
+      
+      console.log('▶️ Starting ElevenLabs audio playback...');
+      await audio.play();
+      
+    } catch (error: any) {
+      console.error('❌ ElevenLabs TTS failed, falling back to browser TTS:', error);
+      setIsSpeaking(false);
+      
+      // Fallback to browser speech synthesis if ElevenLabs fails
+      if ('speechSynthesis' in window) {
+        console.log('🔄 Using browser speech synthesis fallback');
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        utterance.onstart = () => {
+          console.log('🔊 Browser TTS started');
+          setIsSpeaking(true);
+        };
+        utterance.onend = () => {
+          console.log('🔊 Browser TTS ended');
+          setIsSpeaking(false);
+          
+          // Restart listening after AI finishes speaking (with delay to prevent echo)
+          if (isConversationActive && !isProcessing) {
+            setTimeout(() => {
+              if (recognitionRef.current && !isListening && isConversationActive) {
+                addDebugMessage('🔄 Restarting listening after AI speech (fallback)...');
+                try {
+                  recognitionRef.current.start();
+                  setIsListening(true);
+                } catch (error: any) {
+                  addDebugMessage(`Failed to restart listening: ${error.message}`);
+                }
+              }
+            }, 1000); // 1 second delay to prevent echo
+          }
+        };
+        synthRef.current = utterance;
+        window.speechSynthesis.speak(utterance);
+      }
     }
   };
 
@@ -278,6 +380,7 @@ export default function VoiceAgentPage() {
       addDebugMessage('Starting speech recognition...');
       setTranscript('');
       setCurrentInterimTranscript('');
+      setIsConversationActive(true);
       
       try {
         recognitionRef.current?.start();
@@ -287,6 +390,33 @@ export default function VoiceAgentPage() {
         setIsListening(false);
       }
     }
+  };
+
+  const stopConversation = () => {
+    addDebugMessage('Stopping conversation...');
+    
+    // Stop speech recognition
+    if (recognitionRef.current && isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    }
+    
+    // Stop current audio playback
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      setCurrentAudio(null);
+    }
+    
+    // Stop browser speech synthesis as fallback
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    
+    setIsSpeaking(false);
+    setIsProcessing(false);
+    setCurrentInterimTranscript('');
+    setIsConversationActive(false);
   };
 
   const clearConversation = () => {
@@ -455,15 +585,29 @@ export default function VoiceAgentPage() {
                 )}
               </div>
 
-              <Button
-                onClick={toggleListening}
-                size="lg"
-                variant={isListening ? "destructive" : "default"}
-                className="w-full"
-                disabled={isProcessing || microphoneStatus === 'checking'}
-              >
-                {isListening ? 'Stop Listening' : 'Start Voice Chat'}
-              </Button>
+              <div className="space-y-3 w-full">
+                <Button
+                  onClick={toggleListening}
+                  size="lg"
+                  variant={isListening ? "destructive" : "default"}
+                  className="w-full"
+                  disabled={isProcessing || microphoneStatus === 'checking'}
+                >
+                  {isListening ? 'Stop Listening' : 'Start Voice Chat'}
+                </Button>
+                
+                {isConversationActive && (
+                  <Button
+                    onClick={stopConversation}
+                    size="lg"
+                    variant="outline"
+                    className="w-full border-red-200 text-red-600 hover:bg-red-50"
+                  >
+                    <Square className="h-4 w-4 mr-2" />
+                    Stop Conversation
+                  </Button>
+                )}
+              </div>
 
               {/* Microphone Status Indicator */}
               <div className="text-center">

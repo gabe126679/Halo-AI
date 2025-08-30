@@ -43,7 +43,7 @@ export function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button asChild size="lg" className="halo-button text-lg px-8">
-              <Link href="/voice-agent">
+              <Link href="/intelligent-onboarding">
                 <MessageSquare className="mr-2 h-5 w-5" />
                 See Halo AI in Action
               </Link>
