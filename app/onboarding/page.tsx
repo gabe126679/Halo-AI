@@ -1,7 +1,7 @@
 import { OnboardingWizard } from '@/components/onboarding/onboarding-wizard';
 
 export const metadata = {
-  title: 'Onboarding - Anni AI',
+  title: 'Onboarding - Halo AI',
   description: 'Configure your AI voice agent and start capturing leads.',
 };
 

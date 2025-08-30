@@ -18,7 +18,7 @@ export function ContactSection() {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss your needs and show you exactly how Anni AI can transform your business.
+            Let's discuss your needs and show you exactly how Halo AI can transform your business.
             We'll get back to you within 24 hours.
           </p>
         </motion.div>

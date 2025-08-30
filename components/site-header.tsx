@@ -8,7 +8,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Moon, Sun, Menu, Zap } from 'lucide-react';
 
 const navigation = [
-  { name: 'Services', href: '#services' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'Voice Agent', href: '/voice-agent' },
   { name: 'Demo', href: '/intelligent-onboarding' },

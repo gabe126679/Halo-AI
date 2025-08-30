@@ -50,7 +50,7 @@ export function FAQAccordion() {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to know about getting started with Anni AI.
+            Everything you need to know about getting started with Halo AI.
           </p>
         </motion.div>
 

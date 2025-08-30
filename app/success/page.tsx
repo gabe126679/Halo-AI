@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Success - Anni AI',
+  title: 'Success - Halo AI',
   description: 'Thank you for your submission.',
 };
 

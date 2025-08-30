@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Terms of Service - Anni AI',
+  title: 'Terms of Service - Halo AI',
   description: 'Terms and conditions for using our services.',
 };
 
@@ -12,13 +12,13 @@ export default function TermsPage() {
         
         <h2>Acceptance of Terms</h2>
         <p>
-          By accessing and using Anni AI services, you accept and agree to be bound by the terms
+          By accessing and using Halo AI services, you accept and agree to be bound by the terms
           and provision of this agreement.
         </p>
         
         <h2>Use License</h2>
         <p>
-          Permission is granted to temporarily use Anni AI services for personal or commercial use.
+          Permission is granted to temporarily use Halo AI services for personal or commercial use.
           This is the grant of a license, not a transfer of title.
         </p>
         
@@ -36,7 +36,7 @@ export default function TermsPage() {
         
         <h2>Limitation of Liability</h2>
         <p>
-          Anni AI shall not be liable for any indirect, incidental, special, consequential, or
+          Halo AI shall not be liable for any indirect, incidental, special, consequential, or
           punitive damages resulting from your use of our services.
         </p>
         

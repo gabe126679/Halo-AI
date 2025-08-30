@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
               <Zap className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Anni AI</span>
+              <span className="text-xl font-bold">Halo AI</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
               AI that answers. Revenue that follows.
@@ -71,7 +71,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Anni AI. All rights reserved.
+          © {new Date().getFullYear()} Halo AI. All rights reserved.
         </div>
       </div>
     </footer>

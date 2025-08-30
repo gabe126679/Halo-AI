@@ -7,7 +7,7 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    content: "Anni AI transformed our lead capture process. We went from missing 40% of calls to capturing every opportunity. ROI was immediate.",
+    content: "Halo AI transformed our lead capture process. We went from missing 40% of calls to capturing every opportunity. ROI was immediate.",
     author: "Sarah Chen",
     title: "VP of Sales",
     company: "TechFlow Realty",
@@ -44,7 +44,7 @@ export function Testimonials() {
             Trusted by Growing Businesses
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what our clients say about their experience with Anni AI.
+            See what our clients say about their experience with Halo AI.
           </p>
         </motion.div>
 

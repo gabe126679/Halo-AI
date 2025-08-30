@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Privacy Policy - Anni AI',
+  title: 'Privacy Policy - Halo AI',
   description: 'Our commitment to protecting your privacy.',
 };
 

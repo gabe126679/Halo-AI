@@ -1,7 +1,7 @@
 import { PricingTable } from '@/components/pricing/pricing-table';
 
 export const metadata = {
-  title: 'Pricing - Anni AI',
+  title: 'Pricing - Halo AI',
   description: 'Choose the right plan for your business needs.',
 };
 
